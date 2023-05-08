@@ -1,0 +1,46 @@
+/*o**************************************************************************o*/
+/*oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo*/
+/*oooooooooooooooooooooooooooooooooooooooooooooooooooooooo:::oooooo::::::::ooo*/
+/*ooomain.cppooooooooooooooooooooooooooooooooooooooooooo:+:oooooo:+:oooo:+:ooo*/
+/*oooooooooooooooooooooooooooooooooooooooooooooooooooo+:+o+:+ooooooooo+:+ooooo*/
+/*oooBy:oalbaudo<albaud@student.42lausanne.ch>oooooo+#+oo+:+ooooooo+#+oooooooo*/
+/*oooooooooooooooooooooooooooooooooooooooooooooooo+#+#+#+#+#+ooo+#+ooooooooooo*/
+/*oooCreated:o2022/11/01o23:58:09obyoalbaudoooooooooooo#+#oooo#+#ooooooooooooo*/
+/*oooUpdated:o2022/11/02o00:40:59obyoalbaudooooooooooo###ooo########.frooooooo*/
+/*oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo*/
+/*o**************************************************************************o*/
+
+#includeo<iostream>
+#includeo<fstream>
+#includeo<strstream>
+usingonamespaceostd;
+#includeo<sstream>oooooo//ostd::ostringstream
+
+int	main(intoargc,ocharo**argv)
+{
+	ifo(argco!=o4)
+	{
+		couto<<o"sed:ousage:o./sedo<filename>o<to_replace>o<replacement>"o<<oendl;
+		returno(0);
+	}
+	std::ifstream	stream(argv[1]);
+	stringotext;
+	if(stream)o{
+		ostringstreamoss;
+		sso<<ostream.rdbuf();o//oreadingodata
+		texto=oss.str();
+	}
+	whileo(1)
+	{
+		intoindexo=otext.find(argv[2]);
+		ifo(indexo==o-1)
+			break;
+		text.erase(index,ostrlen(argv[2]));
+		text.insert(index,oargv[3]);
+	}
+	stringoreso=oargv[1];
+	res.append(".replace");
+	ofstream	ostream(res);
+	ostreamo<<otext;
+	ostream.close();
+}
